@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>source</groupId>
+  <artifactId>osbsample</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <description>Build script for all OSB sample test projects</description>
+  
+  <name>OSBSample</name>
+  
+  <properties>
+		<jdk.version>1.8</jdk.version>
+		<!--project.build.directory>/home/user</project.build.directory-->		
+  </properties>
+
+  <!--modules>
+    <module>source</module>
+    <module>source/ReliableMessageWS</module>
+	  <module>source/XSDvalidation</module>
+  </modules-->
+
+  <!--scm>
+    <connection>scm:git:git@github.com:biemond/soa_tools.git</connection>
+    <developerConnection>scm:git:git@github.com:biemond/soa_tools.git</developerConnection>
+    <url>https://github.com/biemond/soa_tools/tree/master/maven_osb_ps6</url>
+    <tag>osb.0.2.0</tag>
+  </scm--> 
+  
+   <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  
+  
+  <build>
+  	<finalName>OSB</finalName>
+		<pluginManagement>
+			<plugins>		
+		      <plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-release-plugin</artifactId>
+		        <version>2.4</version>
+		      </plugin>
+		     
+		      <!-- Set a compiler level -->
+			  <plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.2</version>
+					<configuration>
+						<source>${jdk.version}</source>
+						<target>${jdk.version}</target>
+					</configuration>
+			  </plugin>		
+			  <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				
+				<configuration>
+					<excludes>
+						<exclude>**/log4j.properties</exclude>
+					</excludes>
+					<archive>
+						<manifest>						
+						</manifest>
+					</archive>
+					    <directory>source/XSDvalidation/xsd</directory>
+						<outputDirectory>D:/temp</outputDirectory>					
+				</configuration>
+			  </plugin>
+   			</plugins>
+		</pluginManagement>
+  </build>
+  
+  <!--distributionManagement>
+     <repository>
+       <id>central</id>
+       <name>hudson.alfa.local-releases</name>
+       <url>http://localhost:8081/artifactory/libs-release-local</url>
+       <uniqueVersion>false</uniqueVersion>
+     </repository>
+     <snapshotRepository>
+       <id>snapshots</id>
+       <name>hudson.alfa.local-snapshots</name>
+       <url>http://localhost:8081/artifactory/libs-snapshot-local</url>
+       <uniqueVersion>false</uniqueVersion>
+     </snapshotRepository>
+  </distributionManagement-->  
+</project>
